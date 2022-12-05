@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-    </body>
+
+<head>
+  {{- partial "head.html" . -}}
+
+</head>
+
+<body class="has-background-grey-lighter">
+  {{- partial "header.html" . -}}
+  <div class="container px-0">
+    <div class="columns is-flex is-gapless">
+      <div class="column has-background-white-ter">
+        <nav class="panel is-info is-shadowless">
+          <p class="panel-heading is-radiusless">
+            Follow:
+          </p>
+
+          white-ter
+        </nav>
+      </div>
+      <div class="column is-three-fifths">
+        <section class="panel is-shadowless	has-background-white">
+          <p class="panel-heading is-radiusless">
+            Mixed
+          </p>
+          <div class="panel-block is-flex-direction-column">
+            {{- block "main" . }}{{- end }}
+          </div>
+          white-bis
+          </nav>
+      </div>
+      <div class="column has-background-white-ter">
+        <nav class="panel is-warning is-shadowless">
+          <p class="panel-heading is-radiusless	">
+            More
+          </p>
+          white-ter
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+  {{- partial "footer.html" . -}}
+  <section class="section is-small has-background-grey-darker	has-text-white">
+    <div class="container">
+      <h1 class="title">Medium section</h1>
+      <h2 class="subtitle">
+        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
+      </h2>
+    </div>
+  </section>
+
+  {{- partial "scripts.html" . -}}
+</body>
+
 </html>
