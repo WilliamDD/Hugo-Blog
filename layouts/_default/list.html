@@ -1,19 +1,6 @@
 {{ define "main" }}
-
-{{ range first 1 .Paginator.Pages }}
-    <!-- Banner -->
-    {{- partial "banner.html" . -}}
-{{ end }}
-
-<section>
-    <header class="major">
-        <h2>{{ .Site.Params.Header }}</h2>
-    </header>
-    <div class="posts">
-        {{ range after 1 .Paginator.Pages }}
-        {{- partial "article.html" . -}}
-        {{ end }}
-    </div>
+    {{ range .Paginator.Pages }}
+    {{- partial "article.html" . -}}
+    {{ end }}
     {{ partial "pagination.html" . }}
-</section>
 {{ end }}

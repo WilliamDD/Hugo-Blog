@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Page.Language | default " nl-nl" }}">
 
 <head>
   {{- partial "head.html" . -}}
@@ -27,7 +27,6 @@
           <div class="panel-block is-flex-direction-column">
             {{- block "main" . }}{{- end }}
           </div>
-          white-bis
           </nav>
       </div>
       <div class="column has-background-white-ter">
@@ -43,14 +42,7 @@
 
 
   {{- partial "footer.html" . -}}
-  <section class="section is-small has-background-grey-darker	has-text-white">
-    <div class="container">
-      <h1 class="title">Medium section</h1>
-      <h2 class="subtitle">
-        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-      </h2>
-    </div>
-  </section>
+  
 
   {{- partial "scripts.html" . -}}
 </body>
