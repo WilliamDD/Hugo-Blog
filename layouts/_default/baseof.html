@@ -6,40 +6,17 @@
 
 </head>
 
-<body class="has-background-grey-lighter">
+<body class="has-background-white-ter">
   {{- partial "header.html" . -}}
-  <div class="container px-0">
-    <div class="columns is-flex is-gapless">
-      <div class="column has-background-white-ter">
-        <nav class="panel is-info is-shadowless">
-          <p class="panel-heading is-radiusless">
-            Follow:
-          </p>
-
-          white-ter
-        </nav>
+  <section class="container py-6">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        {{- block "main" . }}{{- end }}
       </div>
-      <div class="column is-three-fifths">
-        <section class="panel is-shadowless	has-background-white">
-          <p class="panel-heading is-radiusless">
-            Mixed
-          </p>
-          <div class="panel-block is-flex-direction-column">
-            {{- block "main" . }}{{- end }}
-          </div>
-          </nav>
+      <div class="column">
+        {{- partial "sidebar.html" . -}}
       </div>
-      <div class="column has-background-white-ter">
-        <nav class="panel is-warning is-shadowless">
-          <p class="panel-heading is-radiusless	">
-            More
-          </p>
-          white-ter
-        </nav>
-      </div>
-    </div>
-  </div>
-
+  </section>
 
   {{- partial "footer.html" . -}}
   

@@ -1,0 +1,45 @@
+<!-- Search -->
+<!--
+<div class="widget">
+    <h5 class="widget-title"><span>Search</span></h5>
+    <form action="javascript:void(0)" class="widget-search">
+        <input id="search-query2" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+        <button type="submit"><i class="ti-search"></i>
+        </button>
+    </form>
+</div>
+-->
+{{ range $key, $value := .Site.Taxonomies }}
+<nav class="panel mb-6">
+    <p class="panel-heading is-capitalized">
+        {{ $key }}
+    </p>
+    {{ range first 10 $value.ByCount }}
+        <a href='{{ $.Site.BaseURL}}{{ $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="panel-block has-background-white-bis">
+            <span class="panel-icon">
+                <i class="fas fa-tags" aria-hidden="true"></i>
+            </span>
+            <span class="is-capitalized	">{{ .Name }}</span>
+            <span class="tag is-dark ml-auto">{{ .Count }}</span>
+        </a>
+        
+    {{ end }}
+</nav>
+{{ end }}
+<!-- latest post -->
+<nav class="panel mb-6">
+    <p class="panel-heading">
+        Featured Articles
+    </p>
+
+    {{ range first 3 .Site.Taxonomies.tags.featured }}
+    <a href='{{ .Permalink }}' class="panel-block has-background-white-bis">
+        <span class="panel-icon">
+            <img src="{{ .Params.featureImage }}" alt="Image">
+        </span>
+        {{ .Title }}<small></small>
+        <small class="ml-auto">{{ .PublishDate.Format "January 2, 2006" }}</small></a>
+    </a>
+
+    {{ end }}
+</nav>
