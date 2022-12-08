@@ -20,7 +20,7 @@
                 <i class="fas fa-tags" aria-hidden="true"></i>
             </span>
             <span class="is-capitalized	">{{ .Name }}</span>
-            <span class="tag is-dark ml-auto">{{ .Count }}</span>
+            <span class="tag is-info ml-auto">{{ .Count }}</span>
         </a>
         
     {{ end }}
@@ -31,15 +31,32 @@
     <p class="panel-heading">
         Featured Articles
     </p>
+    <div id="playlist" data-example>
 
-    {{ range first 3 .Site.Taxonomies.tags.featured }}
-    <a href='{{ .Permalink }}' class="panel-block has-background-white-bis">
-        <span class="panel-icon">
-            <img src="{{ .Params.featureImage }}" alt="Image">
-        </span>
-        {{ .Title }}<small></small>
-        <small class="ml-auto">{{ .PublishDate.Format "January 2, 2006" }}</small></a>
-    </a>
+    {{ range first 5 .Site.Taxonomies.tags.featured }}
 
-    {{ end }}
+        <a href='{{ .Permalink }}' class="list has-overflow-ellipsis has-visible-pointer-controls has-hoverable-list-items has-background-white-bis">
+          <div class="list-item">
+            <div class="list-item-image">
+              <figure class="image is-square is-fullwidth is-64x64">
+                <img src="{{ .Params.featureImage }}" alt="Night Sketches">
+              </figure>
+            </div>
+            
+            <div class="list-item-content">
+              <div class="list-item-title">
+                {{ .Title }}
+              </div>
+     
+              <div class="description">
+                {{ .PublishDate.Format "January 2, 2006" }}
+              </div>
+            </div>
+          </div>
+          
+          
+        </a>
+        
+        {{ end }}
+    </div>
 </nav>

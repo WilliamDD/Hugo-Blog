@@ -1,0 +1,7 @@
+body, button, input, optgroup, select, textarea{
+    font-family: 'Open Sans', sans-serif;
+}
+
+code, pre {
+    font-family: 'Source Code Pro', monospace;
+}
