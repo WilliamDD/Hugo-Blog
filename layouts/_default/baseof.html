@@ -10,10 +10,10 @@
   {{- partial "header.html" . -}}
   <section class="container py-6">
     <div class="columns">
-      <div class="column is-two-thirds">
+      <div class="column">
         {{- block "main" . }}{{- end }}
       </div>
-      <div class="column">
+      <div class="column is-one-quarter">
         {{- partial "sidebar.html" . -}}
       </div>
   </section>

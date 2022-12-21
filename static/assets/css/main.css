@@ -5,3 +5,11 @@ body, button, input, optgroup, select, textarea{
 code, pre {
     font-family: 'Source Code Pro', monospace;
 }
+
+.navbar-brand .navbar-item .title {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.image img{
+    object-fit: cover;
+}

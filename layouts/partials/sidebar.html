@@ -11,7 +11,7 @@
 -->
 {{ range $key, $value := .Site.Taxonomies }}
 <nav class="panel mb-6">
-    <p class="panel-heading is-capitalized">
+    <p class="panel-heading is-capitalized has-background-light">
         {{ $key }}
     </p>
     {{ range first 10 $value.ByCount }}
@@ -28,7 +28,7 @@
 {{ end }}
 <!-- latest post -->
 <nav class="panel mb-6">
-    <p class="panel-heading">
+    <p class="panel-heading is-capitalized has-background-light">
         Featured Articles
     </p>
     <div id="playlist" data-example>
