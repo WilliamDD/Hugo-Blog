@@ -6,21 +6,19 @@
 
 </head>
 
-<body class="has-background-white-ter">
+<body id="top" class="has-background-white-ter">
   {{- partial "header.html" . -}}
-  <section class="container py-6">
-    <div class="columns">
+  <div class="container py-6">
+    <div class="columns is-desktop">
       <main class="column">
         {{- block "main" . }}{{- end }}
       </main>
-      <aside class="column is-one-quarter">
+      <aside class="column is-one-quarter-desktop">
         {{- partial "sidebar.html" . -}}
       </aside>
-  </section>
-
+    </div>
+  </div>
   {{- partial "footer.html" . -}}
-  
-
   {{- partial "scripts.html" . -}}
 </body>
 

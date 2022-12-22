@@ -21,3 +21,10 @@ code, pre {
 .tag{
     border:1px solid #dbdbdb;
 }
+
+#TableOfContents ul {
+    list-style-type: "\1F517";
+    list-style-position: outside;
+    margin-left: 20px;
+}
+

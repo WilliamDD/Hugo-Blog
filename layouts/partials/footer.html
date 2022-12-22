@@ -1,6 +1,9 @@
-<footer class="footer is-small has-background-grey-darker	has-text-white">
+<footer class="footer is-small has-background-grey-darker	has-text-white pt-0">
   <div class="container">
-    <h4 class="title is-4 has-text-white">{{ .Title }}</h1>
+    <div class="content has-text-centered">
+      <a class="button is-black" href="#top"><i class="fa-solid fa-chevron-up fa-2x"></i><span class="is-sr-only">Back to top</span></a>
+    </div>
+    <h4 class="title is-4 has-text-white">{{ .Site.Title }}</h1>
     <h5 class="subtitle is-6 has-text-white">
       {{ .Site.Copyright }}
     </h5>

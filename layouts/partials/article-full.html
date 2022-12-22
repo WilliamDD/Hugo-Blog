@@ -19,7 +19,7 @@
             </div>
             <div class="media-content">
                 <h2 class="title is-4">{{ .Title }}</h2>
-                <p class="subtitle is-6"><i class="fa-solid fa-user"></i>
+                <p class="subtitle is-6 is-clipped"><i class="fa-solid fa-user"></i>
                 {{ if isset .Params "author" }}
                 {{ $author := index .Site.Data.authors .Params.Author }}
                     {{ $author.name }} 
@@ -31,8 +31,14 @@
             </div>
         </div>
 
-        <div class="content mb-6">
+        <div class="content">
             <div class="mb-5">
+                {{ if gt .WordCount 400  }}
+                <div id="toc" class="has-background-light is-pulled-right p-4">
+                    <p class="Title">Table of Contents</p>
+                    {{ .TableOfContents }}
+                </div>
+                {{ end }}
                 {{ .Content }}
             </div>
             <div class="tags has-addons is-pulled-left">
@@ -47,6 +53,7 @@
                     <a class="tag has-background-light has-text-black" href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
                 {{ end }}
             </div>
+            <div class="is-clearfix"></div>
         </div>
     </div>
 </article>
