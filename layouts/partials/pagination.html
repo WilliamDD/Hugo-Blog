@@ -7,80 +7,79 @@
 {{- $format := "default" }}
 
 {{- if reflect.IsMap . }}
-  {{- with .page }}
-    {{- $page = . }}
-  {{- else }}
-    {{- errorf $msg1 }}
-  {{- end }}
-  {{- with .format }}
-    {{- $format = lower . }}
-  {{- end }}
+{{- with .page }}
+{{- $page = . }}
+{{- else }}
+{{- errorf $msg1 }}
+{{- end }}
+{{- with .format }}
+{{- $format = lower . }}
+{{- end }}
 {{- end }}
 
 {{- if in $validFormats $format }}
-  {{- if gt $page.Paginator.TotalPages 1 }}
-  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-      {{- partial (printf "partials/inline/pagination/%s" $format) $page }}
-  </nav>
-  {{- end }}
+{{- if gt $page.Paginator.TotalPages 1 }}
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+  {{- partial (printf "partials/inline/pagination/%s" $format) $page }}
+</nav>
+{{- end }}
 {{- else }}
-  {{- errorf $msg2 (delimit $validFormats ", ") }}
+{{- errorf $msg2 (delimit $validFormats ", ") }}
 {{- end -}}
 
 {{/* Format: default
 {{/* --------------------------------------------------------------------- */}}
 {{- define "partials/inline/pagination/default" }}
-  {{- with .Paginator }}
-    {{- $currentPageNumber := .PageNumber }}
+{{- with .Paginator }}
+{{- $currentPageNumber := .PageNumber }}
 
-    {{- with .Prev }}
-      <a href="{{ .URL }}" class="pagination-previous">Previous</a>
-    {{- else }}
-      <a href="{{ .URL }}" class="pagination-previous disabled">Previous</a>
-    {{- end }}
+{{- with .Prev }}
+<a href="{{ .URL }}" class="pagination-previous">Previous</a>
+{{- else }}
+{{- end }}
 
-    {{- with .Next }}
-    <a href="{{ .URL }}" class="pagination-next">Next page</a>
+{{- with .Next }}
+<a href="{{ .URL }}" class="pagination-next">Next page</a>
+{{- else }}
+{{- end }}
+<ul class="pagination-list">
+  {{- with .First }}
+  {{- if gt $currentPageNumber 3 }}
+  <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page first page">1</a></li>
+  {{- end }}
+  {{- if gt $currentPageNumber 4 }}
+  <li><span class="pagination-ellipsis">&hellip;</span></li>
+  {{- end }}
+  {{- end }}
+
+
+
+  {{- $slots := 5 }}
+  {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
+  {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
+  {{- if lt (add (sub $end $start) 1) $slots }}
+  {{- $start = math.Max 1 (add (sub $end $slots) 1) }}
+  {{- end }}
+
+  {{- range $k := seq $start $end }}
+  {{- if eq $.Paginator.PageNumber $k }}
+  <li><a class="pagination-link has-background-info	has-text-black" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
   {{- else }}
-    <a href="{{ .URL }}" class="pagination-next disabled">Next page</a>
+  <li><a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" class="pagination-link"
+      aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
   {{- end }}
-  <ul class="pagination-list">
-    {{- with .First }}
-      {{- if gt $currentPageNumber 3 }}
-        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page first page">1</a></li>
-      {{- end }}
-      {{- if gt $currentPageNumber 4 }}
-      <li><span class="pagination-ellipsis">&hellip;</span></li>
-      {{- end }}
-    {{- end }}
-
-    
-
-    {{- $slots := 5 }}
-    {{- $start := math.Max 1 (sub .PageNumber (math.Floor (div $slots 2))) }}
-    {{- $end := math.Min .TotalPages (sub (add $start $slots) 1) }}
-    {{- if lt (add (sub $end $start) 1) $slots }}
-      {{- $start = math.Max 1 (add (sub $end $slots) 1) }}
-    {{- end }}
-
-    {{- range $k := seq $start $end }}
-      {{- if eq $.Paginator.PageNumber $k }}
-      <li><a class="pagination-link has-background-info	has-text-black" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
-      {{- else }}
-      <li><a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" class="pagination-link" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
-      {{- end }}
-    {{- end }}
-
-    
-
-    {{- with .Last }}
-      {{- if lt $currentPageNumber (sub .TotalPages 3) }}
-        <li><span class="pagination-ellipsis">&hellip;</span></li>
-      {{- end }}
-      {{- if lt $currentPageNumber (sub .TotalPages 2) }}
-        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page last page">{{ .TotalPages }}</a></li>
-      {{- end }}
-    {{- end }}
-    </ul>
   {{- end }}
+
+
+
+  {{- with .Last }}
+  {{- if lt $currentPageNumber (sub .TotalPages 3) }}
+  <li><span class="pagination-ellipsis">&hellip;</span></li>
+  {{- end }}
+  {{- if lt $currentPageNumber (sub .TotalPages 2) }}
+  <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page last page">{{ .TotalPages }}</a></li>
+  {{- end }}
+  {{- end }}
+</ul>
+{{- end }}
 {{- end -}}
