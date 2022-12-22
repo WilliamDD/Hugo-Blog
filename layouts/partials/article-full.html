@@ -34,19 +34,16 @@
             <div class="mb-5">
                 {{ .Content }}
             </div>
-            <div class="mb-5"> 
-                <a href="{{ .Permalink }}" class="button is-info">Read more about {{ .Title }}</a>
-            </div>
             <div class="tags has-addons is-pulled-left">
                 <span class="tag is-dark">Categories</span>
                 {{ range .Params.categories }}
-                    <a class="tag is-info" href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> 
+                    <a class="tag has-background-light has-text-black" href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> 
                 {{ end }}
             </div>
             <div class="tags has-addons is-pulled-right">
                 <span class="tag is-dark">Tags</span>
                 {{ range .Params.tags }}
-                    <a class="tag is-info" href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+                    <a class="tag has-background-light has-text-black" href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
                 {{ end }}
             </div>
         </div>

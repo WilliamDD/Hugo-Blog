@@ -17,8 +17,8 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        <h1 class="title has-text-white	is-size-2">
-        {{ .Title }}
+        <h1 class="title has-text-black	is-size-2">
+        {{ .Site.Title }}
         </h1>
       </a>
 
@@ -34,8 +34,8 @@
         {{ $currentPage := . }}
             {{ range .Site.Menus.main }}
             {{ if .HasChildren }}
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link has-text-white is-size-5">
+            <div class="navbar-item has-text-black has-dropdown is-hoverable">
+              <a class="navbar-link has-text-black is-size-5">
                 {{ .Name }}
               </a>
 
@@ -47,7 +47,7 @@
             </div>
 
             {{ else }}
-            <a href="{{ .URL }}" class="navbar-item has-text-white is-size-5">
+            <a href="{{ .URL }}" class="navbar-item has-text-black is-size-5">
               {{ .Name }}
             </a>
             {{ end }}

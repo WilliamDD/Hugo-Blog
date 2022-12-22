@@ -13,3 +13,11 @@ code, pre {
 .image img{
     object-fit: cover;
 }
+
+.navbar-link:not(.is-arrowless)::after{
+    border-color: #0a0a0a!important;
+}
+
+.tag{
+    border:1px solid #dbdbdb;
+}

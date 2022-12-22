@@ -10,7 +10,7 @@
 </div>
 -->
 {{ range $key, $value := .Site.Taxonomies }}
-<nav class="panel mb-6">
+<nav class="panel mb-6" role="navigation" aria-label="{{ $key }} navigation">
     <p class="panel-heading is-capitalized has-background-light">
         {{ $key }}
     </p>
@@ -20,14 +20,14 @@
                 <i class="fas fa-tags" aria-hidden="true"></i>
             </span>
             <span class="is-capitalized	">{{ .Name }}</span>
-            <span class="tag is-info ml-auto">{{ .Count }}</span>
+            <span class="tag has-background-light ml-auto has-text-black	">{{ .Count }}</span>
         </a>
         
     {{ end }}
 </nav>
 {{ end }}
 <!-- latest post -->
-<nav class="panel mb-6">
+<nav class="panel mb-6"  role="navigation" aria-label="Featured articles navigation">
     <p class="panel-heading is-capitalized has-background-light">
         Featured Articles
     </p>
@@ -39,7 +39,7 @@
           <div class="list-item">
             <div class="list-item-image">
               <figure class="image is-square is-fullwidth is-64x64">
-                <img src="{{ .Params.featureImage }}" alt="Night Sketches">
+                <img src="{{ .Params.featureImage }}" alt="featured image of featured article {{ .Title }}">
               </figure>
             </div>
             
