@@ -10,12 +10,12 @@
   {{- partial "header.html" . -}}
   <section class="container py-6">
     <div class="columns">
-      <div class="column">
+      <main class="column">
         {{- block "main" . }}{{- end }}
-      </div>
-      <div class="column is-one-quarter">
+      </main>
+      <aside class="column is-one-quarter">
         {{- partial "sidebar.html" . -}}
-      </div>
+      </aside>
   </section>
 
   {{- partial "footer.html" . -}}

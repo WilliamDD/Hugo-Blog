@@ -2,38 +2,46 @@
 {{ with .Site.Social.Facebook -}}
 <a class="ml-3" href="https://facebook.com/{{ . }}">
     <i class="fa-brands fa-square-facebook fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Facebook</span>
 </a>
 {{ end }}
 {{ with .Site.Social.twitter -}}
 <a class="ml-3" href="https://twitter.com/{{ . }}">
     <i class="fa-brands fa-square-twitter fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Twitter</span>
 </a>
 {{ end }}
 {{ with .Site.Social.pinterest -}}
 <a class="ml-3" href="https://www.pinterest.com/{{ . }}">
     <i class="fa-brands fa-square-pinterest fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Pinterest</span>
 </a>
 {{ end }}
 {{ with .Site.Social.youtube -}}
 <a class="ml-3" href="https://www.youtube.com/{{ . }}">
     <i class="fa-brands fa-square-youtube fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Youtube</span>
 </a>
 {{ end }}
 {{ with .Site.Social.instagram -}}
 <a class="ml-3" href="https://instagram.com/{{ . }}">
     <i class="fa-brands fa-square-instagram fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Instagram</span>
 </a>
 {{ end }}
 {{ with .Site.Social.github -}}
 <a class="ml-3" href="https://github.com/{{ . }}">
     <i class="fa-brands fa-square-github fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Github</span>
 </a>
 {{ end }}
 {{ with .Site.Social.linkedin -}}
 <a class="ml-3" href="https://www.linkedin.com/in/{{ . }}/">
     <i class="fa-brands fa-linkedin fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">Linkedin</span>
 </a>
 {{ end }}
 <a class="ml-3" href="{{ "index.xml" | absURL }}">
     <i class="fa-solid fa-square-rss fa-2x has-text-info-dark"></i>
+    <span class="is-sr-only">RSS</span>
 </a>

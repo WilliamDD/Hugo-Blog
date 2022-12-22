@@ -1,7 +1,7 @@
 <div class="card mb-6">
     <div class="card-image">
         <figure class="image is-3by1">
-            <img src="{{ .Params.featureImage }}" alt="Placeholder image">
+            <img src="{{ .Params.featureImage }}" alt="Feature image of {{ .Title }}">
         </figure>
     </div>
     <div class="card-content has-background-white-bis">
@@ -10,20 +10,22 @@
                 <figure class="image is-48x48">
                     {{ if isset .Params "author" }}
                     {{ $author := index .Site.Data.authors .Params.Author }}
-                    <img src="https://www.gravatar.com/avatar/{{ md5 $author.email }}?s=100&d=identicon">
+                    <img src="https://www.gravatar.com/avatar/{{ md5 $author.email }}?s=100&d=identicon" alt="Gravatar of {{ $author.name }}">
                     {{ else }}
-                    <img src="/images/author.jpg" alt="Placeholder image">
+                    <img src="/images/author.jpg" alt="Author doesn't have an image">
                     {{ end }}
 
                 </figure>
             </div>
             <div class="media-content">
-                <p class="title is-4" href="{{ .Permalink }}">{{ .Title }}</p>
+                <h1 class="title is-4">{{ .Title }}</h1>
                 {{ if isset .Params "author" }}
                 {{ $author := index .Site.Data.authors .Params.Author }}
-                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> {{ $author.name }} - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span></p>
+                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> {{ $author.name }} - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span>
+
+                </p>
                 {{ else }}
-                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> Unknown - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span></p>
+                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> >Unknown - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span></p>
                 {{ end }}
             </div>
         </div>
@@ -32,16 +34,19 @@
             <div class="mb-5">
                 {{ .Content }}
             </div>
+            <div class="mb-5"> 
+                <a href="{{ .Permalink }}" class="button is-info">Read more about {{ .Title }}</a>
+            </div>
             <div class="tags has-addons is-pulled-left">
                 <span class="tag is-dark">Categories</span>
                 {{ range .Params.categories }}
-                    <a class="tag is-link" href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> 
+                    <a class="tag is-info" href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a> 
                 {{ end }}
             </div>
             <div class="tags has-addons is-pulled-right">
                 <span class="tag is-dark">Tags</span>
                 {{ range .Params.tags }}
-                    <a class="tag is-link" href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+                    <a class="tag is-info" href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
                 {{ end }}
             </div>
         </div>
