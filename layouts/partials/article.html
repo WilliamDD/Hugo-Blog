@@ -18,15 +18,16 @@
                 </figure>
             </div>
             <div class="media-content">
-                <h3 class="title is-4">{{ .Title }}</h3>
+                <h2 class="title is-4">{{ .Title }}</h2>
+                <p class="subtitle is-6"><i class="fa-solid fa-user"></i>
                 {{ if isset .Params "author" }}
                 {{ $author := index .Site.Data.authors .Params.Author }}
-                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> {{ $author.name }} - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span>
-
-                </p>
+                    {{ $author.name }} 
                 {{ else }}
-                <p class="subtitle is-6"><i class="fa-solid fa-user"></i> >Unknown - <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} - <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span></p>
+                    Unknown
                 {{ end }}
+                <i class="fa-solid fa-calendar"></i> {{ .PublishDate.Format "January 2, 2006" }} <i class="fa-solid fa-stopwatch"></i> {{ .ReadingTime }} minute{{ if (ne .ReadingTime 1) }}s{{ end }} <i class="fa-solid fa-comments"></i> <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}">0 Comments</span>
+                </p>   
             </div>
         </div>
 
