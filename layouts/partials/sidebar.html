@@ -11,9 +11,9 @@
 -->
 {{ range $key, $value := .Site.Taxonomies }}
 <nav class="panel mb-6" role="navigation" aria-label="{{ $key }} navigation">
-    <h4 class="panel-heading is-capitalized has-background-light">
+    <h3 class="panel-heading is-capitalized has-background-light">
         {{ $key }}
-    </h4>
+    </h3>
     {{ range first 10 $value.ByCount }}
         <a href='{{ $.Site.BaseURL}}{{ $key }}/{{ (replace .Name "#" "%23") | urlize }}/' class="panel-block has-background-white-bis">
             <span class="panel-icon">
@@ -28,9 +28,9 @@
 {{ end }}
 <!-- latest post -->
 <nav class="panel mb-6"  role="navigation" aria-label="Featured articles navigation">
-    <h4 class="panel-heading is-capitalized has-background-light">
+    <h3 class="panel-heading is-capitalized has-background-light">
         Featured Articles
-    </h4>
+    </h3>
     <div id="playlist" data-example>
 
     {{ range first 5 .Site.Taxonomies.tags.featured }}
