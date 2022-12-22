@@ -47,7 +47,7 @@
   <ul class="pagination-list">
     {{- with .First }}
       {{- if gt $currentPageNumber 3 }}
-        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page 1">1</a></li>
+        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page first page">1</a></li>
       {{- end }}
       {{- if gt $currentPageNumber 4 }}
       <li><span class="pagination-ellipsis">&hellip;</span></li>
@@ -65,7 +65,7 @@
 
     {{- range $k := seq $start $end }}
       {{- if eq $.Paginator.PageNumber $k }}
-      <li><a class="pagination-link has-background-info	has-text-white" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
+      <li><a class="pagination-link has-background-info	has-text-black" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
       {{- else }}
       <li><a href="{{ (index $.Paginator.Pagers (sub $k 1)).URL }}" class="pagination-link" aria-label="Goto page {{ $k }}">{{ $k }}</a></li>
       {{- end }}
@@ -78,7 +78,7 @@
         <li><span class="pagination-ellipsis">&hellip;</span></li>
       {{- end }}
       {{- if lt $currentPageNumber (sub .TotalPages 2) }}
-        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page {{ .TotalPages }}">{{ .TotalPages }}</a></li>
+        <li><a href="{{ .URL }}" class="pagination-link" aria-label="Goto page last page">{{ .TotalPages }}</a></li>
       {{- end }}
     {{- end }}
     </ul>
