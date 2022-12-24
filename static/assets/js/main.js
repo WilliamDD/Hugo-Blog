@@ -1,6 +1,6 @@
-$(document).ready(function () {
-	$(".navbar-burger").click(function () {
-		$(".navbar-burger").toggleClass("is-active");
-		$("#navbar-main").toggleClass("is-active");
-	});
-});
+window.onload = function(){
+	document.querySelector('.navbar-burger').onclick = function() {
+		document.querySelector('.navbar-burger').classList.toggle('is-active');
+		document.querySelector('#navbar-main').classList.toggle('is-active');
+	};
+};
