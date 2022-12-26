@@ -1,0 +1,12 @@
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+    {{if .PrevInSection}}
+    <a href="{{.PrevInSection.Permalink}}" class="pagination-previous has-background-white-bis">{{.PrevInSection.Title}}</a>
+    {{end}}
+
+    {{if .NextInSection}}
+    
+    <a href="{{.NextInSection.Permalink}}" class="pagination-next has-background-white-bis">{{.NextInSection.Title}}</a>
+
+    {{end}}
+</nav>
